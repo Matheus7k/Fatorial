@@ -1,20 +1,24 @@
-﻿int fatorial, fatorialTotal = 1;
-
-int Fatorial()
+﻿internal class Program
 {
-    if (fatorial == 0 || fatorial == 1)
+    static int Fatorial(int fatorial)
     {
-        return 1;
-    }
-    for (int i = 2; i <= fatorial; i++)
-    {
-        fatorialTotal *= i;
+        if (fatorial == 0 || fatorial == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return fatorial * Fatorial(fatorial - 1);
+        }
     }
 
-    return fatorialTotal;
+    private static void Main(string[] args)
+    {
+        int fatorial;
+
+        Console.Write("Digite um numero fatorial: ");
+        fatorial = int.Parse(Console.ReadLine());
+
+        Console.Write($"O valor de {fatorial}! é: {Fatorial(fatorial)}");
+    }
 }
-
-Console.Write("Digite um numero fatorial: ");
-fatorial = int.Parse(Console.ReadLine());
-
-Console.Write(Fatorial());
